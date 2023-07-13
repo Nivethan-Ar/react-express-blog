@@ -17,7 +17,7 @@ try {
   console.log(err);
 }
 
-app.use('api/v1/auth', AuthRouter);
+app.use('/api/v1/auth', AuthRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`API server running on ${process.env.PORT} port`);

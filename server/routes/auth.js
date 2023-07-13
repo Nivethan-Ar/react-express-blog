@@ -26,4 +26,24 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.post('/signin', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ username }).select('+password').exec();
+    console.log(user);
+    if (!user) {
+      res.status(404).json('invalid credentials');
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      res.status(403).json('invalid credentials');
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 export default router;

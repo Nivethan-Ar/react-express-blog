@@ -17,3 +17,32 @@ Content-Type: application/json
 }
 
 
+### Create a new blog post
+POST http://localhost:3000/api/v1/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+  "heading": "My First Blog Post",
+  "body": "This is the content of my first blog post.",
+  "author": "614c57f9a4c7c729a0552a5d"
+}
+
+### Get all blog posts
+GET http://localhost:3000/api/v1/blogs HTTP/1.1
+
+
+### Get a specific blog post
+GET http://localhost:3000/api/v1/blogs/64b0bdd1ac95496a525de14e HTTP/1.1
+
+### Update a blog post
+PUT http://localhost:3000/api/v1/blogs/64b0bdd1ac95496a525de14e HTTP/1.1
+Content-Type: application/json
+
+{
+  "heading": "Updated Blog Post",
+  "body": "This is the updated content of the blog post."
+}
+
+
+### Delete a blog post
+DELETE http://localhost:3000/api/v1/blogs/64b0c296ac95496a525de157 HTTP/1.1

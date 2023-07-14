@@ -1,17 +1,18 @@
-import Blog from '../models/blog.js'
-import express from 'express'
+import authenticate from '../middlewares/auth.middleware.js';
+import Blog from '../models/blog.js';
+import express from 'express';
 
 const router = express.Router();
 
 // Create a new blog post
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
   try {
     const { heading, body, author } = req.body;
 
     const blogPost = new Blog({
       heading,
       body,
-      author
+      author,
     });
 
     await blogPost.save();
@@ -48,14 +49,18 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a blog post
-router.put('/:id', async (req, res) => {
+router.put('/:id', authenticate, async (req, res) => {
   try {
     const { heading, body } = req.body;
 
-    const blogPost = await Blog.findByIdAndUpdate(req.params.id, {
-      heading,
-      body
-    }, { new: true });
+    const blogPost = await Blog.findByIdAndUpdate(
+      req.params.id,
+      {
+        heading,
+        body,
+      },
+      { new: true }
+    );
 
     if (!blogPost) {
       return res.status(404).json({ error: 'Blog post not found' });
@@ -68,7 +73,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a blog post
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticate, async (req, res) => {
   try {
     const blogPost = await Blog.findByIdAndDelete(req.params.id);
 
@@ -82,4 +87,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-export default router
+export default router;

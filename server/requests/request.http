@@ -20,6 +20,7 @@ Content-Type: application/json
 ### Create a new blog post
 POST http://localhost:3000/api/v1/blogs HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIwMDg1MDBhZWMyZjM4NzM5MWI2NzMiLCJpYXQiOjE2ODkzMTQ4OTYsImV4cCI6MTY4OTM1ODA5Nn0.vqIp_o7G7ZPda0UjFPLcEhCChrfrQR1C-SKRepoyBW8
 
 {
   "heading": "My First Blog Post",
@@ -30,13 +31,13 @@ Content-Type: application/json
 ### Get all blog posts
 GET http://localhost:3000/api/v1/blogs HTTP/1.1
 
-
 ### Get a specific blog post
 GET http://localhost:3000/api/v1/blogs/64b0bdd1ac95496a525de14e HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIwMDg1MDBhZWMyZjM4NzM5MWI2NzMiLCJpYXQiOjE2ODkzMTQ4OTYsImV4cCI6MTY4OTM1ODA5Nn0.vqIp_o7G7ZPda0UjFPLcEhCChrfrQR1C-SKRepoyBW8
 
 ### Update a blog post
 PUT http://localhost:3000/api/v1/blogs/64b0bdd1ac95496a525de14e HTTP/1.1
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIwMDg1MDBhZWMyZjM4NzM5MWI2NzMiLCJpYXQiOjE2ODkzMTQ4OTYsImV4cCI6MTY4OTM1ODA5Nn0.vqIp_o7G7ZPda0UjFPLcEhCChrfrQR1C-SKRepoyBW8
 
 {
   "heading": "Updated Blog Post",

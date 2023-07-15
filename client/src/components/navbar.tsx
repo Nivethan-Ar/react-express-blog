@@ -14,6 +14,10 @@ export default function Navbar() {
     navigate('/blogs');
   };
 
+  const handleProfileClick = () => {
+    navigate('/settings');
+  };
+
   return (
     <div className='font-sans'>
       <div className='z-10 flex justify-between items-baseline px-4 w-screen py-8  text-white font-bold bg-[#2a2753] sticky top-0 '>
@@ -29,9 +33,9 @@ export default function Navbar() {
         >
           Blogs
         </h1>
-        <span className='text-3xl'>
+        <button className='text-3xl' onClick={handleProfileClick}>
           <FaUserAstronaut />
-        </span>
+        </button>
       </div>
       <Outlet />
     </div>

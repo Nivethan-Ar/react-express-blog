@@ -1,11 +1,13 @@
+import cors from 'cors';
 import 'dotenv/config.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import AuthRouter from './routes/auth.js';
-import UserRouter from './routes/user.js';
 import BlogRouter from './routes/blogs.js';
+import UserRouter from './routes/user.js';
 
 let app = express();
+app.use(cors())
 app.use(express.json());
 
 try {

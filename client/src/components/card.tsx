@@ -1,11 +1,10 @@
 interface Props {
   heading: string;
-  author: string;
   createdAt: string;
 }
 
 export default function Card(props: Props) {
-  const { heading, author, createdAt } = props;
+  const { heading, createdAt } = props;
 
   return (
     <div className='min-h-[24rem] bg-white rounded-2xl'>
@@ -17,7 +16,6 @@ export default function Card(props: Props) {
         />
         <div className=' flex flex-col justify-between gap-y-4 mt-6'>
           <p className='font-bold min-h-[]'>{heading}</p>
-          <p>{`By ${author}`}</p>
           <p>{createdAt}</p>
           <p className='text-rose-600 font-semibold'>Learn more</p>
         </div>

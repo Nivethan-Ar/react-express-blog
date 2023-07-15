@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 const useAuth = () => {
-  const user = true;
+  const [user, setUser] = useState<boolean>(true);
+
   if (user) {
     return true;
   }

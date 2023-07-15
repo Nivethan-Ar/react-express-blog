@@ -1,6 +1,7 @@
-import { FaPlusCircle } from 'react-icons/fa';
-import Card from '../components/card';
 import { useEffect, useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import Card from '../components/card';
 import API from '../utils/axios';
 
 interface Blog {
@@ -28,15 +29,23 @@ function Blogs() {
     );
   }, []);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/add-blog');
+  };
+
   return (
     <div className=' bg-[#f4f7fa]'>
       <div className='bg-blue-400/70 text-4xl py-10 flex flex-col gap-y-4 justify-center items-center w-screen '>
         <span className='text-xl font-sans font-bold tracking-wide'>
           The Blog : Sharing Stories, Thoughts & Ideas
         </span>
-        <span className='text-white drop-shadow-2xl'>
+        <button
+          className='text-white rounded-full drop-shadow-2xl'
+          onClick={handleClick}
+        >
           <FaPlusCircle />
-        </span>
+        </button>
       </div>
 
       {/* blog cards */}

@@ -24,7 +24,7 @@ router.post('/', authenticate, async (req, res) => {
 });
 
 // Get all blog posts
-router.get('/', async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
   try {
     const blogPosts = await Blog.find().populate('author');
     res.json(blogPosts);

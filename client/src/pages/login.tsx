@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../redux/app/hook';
 import { setCredentials } from '../redux/features/auth/auth-slice';
-import API from '../utils/axios';
+import API, { setApiAuthHeader } from '../utils/axios';
 
 function Login() {
   const [loginData, setLoginData] = useState({
@@ -31,6 +31,7 @@ function Login() {
       const { userId } = decoded;
 
       if (userId) {
+        setApiAuthHeader(token);
         dispatch(setCredentials({ token, userId }));
         navigate('/blogs');
       }

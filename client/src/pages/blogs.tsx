@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/card';
 import API from '../utils/axios';
 
@@ -52,15 +52,17 @@ function Blogs() {
       <div className='grid grid-cols-1 md:grid-cols-3  gap-8 px-20 md:px-32 py-12 md:py-16'>
         {blogs.map((blog) => {
           return (
-            <Card
-              key={blog._id}
-              heading={blog.heading}
-              createdAt={new Date(blog.createdAt).toLocaleString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-            />
+            <Link to={`/blogs/${blog._id}`}>
+              <Card
+                key={blog._id}
+                heading={blog.heading}
+                createdAt={new Date(blog.createdAt).toLocaleString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              />
+            </Link>
           );
         })}
       </div>

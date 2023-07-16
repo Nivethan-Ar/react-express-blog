@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useAppSelector } from '../redux/app/hook';
+import { RootState } from '../redux/app/store';
 
 const useAuth = () => {
-  const [user, setUser] = useState<boolean>(false);
+  const user = useAppSelector((state: RootState) => state.auth.userId);
 
   if (user) {
     return true;

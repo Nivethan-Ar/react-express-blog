@@ -1,4 +1,8 @@
+import jwtDecode from 'jwt-decode';
 import { ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../redux/app/hook';
+import { setCredentials } from '../redux/features/auth/auth-slice';
 import API from '../utils/axios';
 
 function Login() {
@@ -7,8 +11,10 @@ function Login() {
     password: '',
   });
 
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
     setLoginData((prevLoginData) => ({
       ...prevLoginData,
       [e.target.name]: e.target.value,
@@ -17,8 +23,19 @@ function Login() {
 
   const handleSubmit = async () => {
     console.log(loginData);
-    const res = await API.post('/auth/signin', loginData);
-    console.log(res.data);
+    try {
+      const res = await API.post('/auth/signin', loginData);
+      const token = res.data;
+      const decoded: { userId: string } = jwtDecode(token);
+      const { userId } = decoded;
+
+      if (userId) {
+        dispatch(setCredentials({ token, userId }));
+        navigate('/blogs');
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   return (

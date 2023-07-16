@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import jwtDecode from 'jwt-decode';
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -45,7 +46,7 @@ function Login() {
         <form className='space-y-6'>
           <div className='flex flex-col gap-y-1'>
             <label className='pl-2 font-semibold' htmlFor={'username'}>
-              {'username'}
+              {'Username'}
             </label>
             <input
               className='drop-shadow-lg rounded-md outline-none pl-2'
@@ -58,7 +59,7 @@ function Login() {
 
           <div className='flex flex-col gap-y-1'>
             <label className='pl-2 font-semibold' htmlFor={'password'}>
-              {'password'}
+              {'Password'}
             </label>
             <input
               className='drop-shadow-lg rounded-md outline-none pl-2'
@@ -68,6 +69,16 @@ function Login() {
               onChange={handleChange}
             />
           </div>
+
+          <p>
+            Already have account?{' '}
+            <button
+              onClick={() => navigate('/register')}
+              className='text-violet-800 font-semibold'
+            >
+              Register
+            </button>
+          </p>
         </form>
         <button
           className='bg-violet-800 ml-auto mr-auto w-fit px-10 py-2 rounded-xl drop-shadow-2xl text-xl text-white font-bold'

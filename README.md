@@ -18,17 +18,19 @@ install pnpm
 npm install -g pnpm
 ```
 
-1. Run the api
+1. Run the api in a terminal
 
 ```
 cd server
+pnpm install
 pnpm dev
 ```
 
-2. Run the react app
+2. Run the react app in another terminal
 
 ```
 cd client
+pnpm install
 pnpm dev
 ```
 
